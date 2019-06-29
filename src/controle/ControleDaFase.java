@@ -105,7 +105,9 @@ public class ControleDaFase extends JPanel{
 		
 		for(int i = 0; i<20; i++){
 			try {
-				tigres.add( new Tigre("tigre.png", 0, 100, 100,4,4,
+//				tigres.add( new Tigre("tigre.png", 0, 100, 100,4,4,
+//						430, 550 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
+				tigres.add( new Tigre("maca.png", 0, 100, 100,4,4,
 						430, 550 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
 			} catch (IOException e) {
 				e.printStackTrace();

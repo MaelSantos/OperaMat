@@ -40,7 +40,7 @@ public class ControleTelaMenu extends JFrame{
 	
 		add(telaMenu.getMenuImagem()).setBounds(-5,0,800,600);
 			
-		setSize(800, 650);
+		setSize(800, 680);
 		setForeground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFocusable(false);

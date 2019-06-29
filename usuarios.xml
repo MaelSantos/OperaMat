@@ -69,4 +69,30 @@ NOTA: 0.0
 
 NOTA: 0.5
 
+</resultado></Usuarios><Usuarios><nome>Mael</nome><resultado>(1 + 7) : (ACERTOU!)
+(1 + 9) : (ACERTOU!)
+(1 + 11) : (ACERTOU!)
+(1 + 34) : (ACERTOU!)
+(1 + 5) : (ACERTOU!)
+(1 + 5) : (ACERTOU!)
+(9 + 5) : (ERROU!)
+(1 + 55) : (ERROU!)
+(1 + 55) : (ERROU!)
+(1 + 55) : (ERROU!)
+(1 + 55) : (ERROU!)
+
+NOTA: 3.0
+
+</resultado></Usuarios><Usuarios><nome>mael</nome><resultado>(6 + 0) : (ACERTOU!)
+(8 + 0) : (ACERTOU!)
+(1 + 49) : (ERROU!)
+(1 + 49) : (ERROU!)
+(1 + 49) : (ACERTOU!)
+(1 + 15) : (ACERTOU!)
+(1 + 80) : (ERROU!)
+(1 + 80) : (ERROU!)
+(1 + 80) : (ERROU!)
+
+NOTA: 2.0
+
 </resultado></Usuarios></Nome>

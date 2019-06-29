@@ -19,8 +19,6 @@ public class Sprite{
 			throws IOException {
 		
 		this.setImagemAtual(aparencia);
-		this.largura = _largura;
-		this.altura = _altura;
 		this.spriteQuadro = ImageIO.read(getURL(filename));  
 		
 		this.largura = spriteQuadro.getWidth()/_colunas;
@@ -35,7 +33,7 @@ public class Sprite{
 		
 		for(int i = 0; i < _colunas; i++) {
 			for(int j = 0; j < _linhas; j++) {
-				getSprites()[(i * _linhas) + j] = spriteQuadro.getSubimage(i * _largura, j * _altura, _largura, _altura);
+				getSprites()[(i * _linhas) + j] = spriteQuadro.getSubimage(i * largura, j * altura, largura, altura);
 			}
 		}
 	}
