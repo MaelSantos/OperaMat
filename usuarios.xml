@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Nome><Usuarios><nome>Matheus</nome><resultado>(158 - 123) : (ERROU!)
+(7 * 5) : (ACERTOU!)
+72 : 7 (ERROU!)
+8 : 4 (ACERTOU!)
+(3 + 25) : (ACERTOU!)
+(3 * 4) : (ERROU!)
+12 : 3 (ACERTOU!)
+(9 * 4) : (ERROU!)
+(7 + 18) : (ERROU!)
+
+NOTA: 2.0
+
+</resultado></Usuarios><Usuarios><nome>asd</nome><resultado>(6 + 0) : (ERROU!)
+(4 + 68) : (ERROU!)
+(5 + 67) : (ERROU!)
+(5 + 67) : (ERROU!)
+(2 + 70) : (ERROU!)
+
+NOTA: 0.0
+
+</resultado></Usuarios><Usuarios><nome>sdfg</nome><resultado>6 : 4 (ERROU!)
+72 : 7 (ERROU!)
+36 : 5 (ERROU!)
+90 : 4 (ERROU!)
+18 : 5 (ERROU!)
+
+NOTA: 0.0
+
+</resultado></Usuarios><Usuarios><nome>asd</nome><resultado>36 : 6 (ACERTOU!)
+48 : 6 (ACERTOU!)
+9 : 4 (ERROU!)
+15 : 2 (ERROU!)
+21 : 7 (ACERTOU!)
+56 : 8 (ACERTOU!)
+36 : 9 (ACERTOU!)
+40 : 5 (ACERTOU!)
+32 : 4 (ACERTOU!)
+81 : 10 (ERROU!)
+10 : 3 (ERROU!)
+12 : 2 (ACERTOU!)
+49 : 6 (ERROU!)
+
+NOTA: 4.0
+
+</resultado></Usuarios><Usuarios><nome>asd</nome><resultado>(9 * 1) : (ERROU!)
+(9 * 1) : (ERROU!)
+(9 * 1) : (ERROU!)
+(6 * 1) : (ACERTOU!)
+(9 * 1) : (ERROU!)
+(9 * 1) : (ERROU!)
+
+NOTA: 0.5
+
+</resultado></Usuarios><Usuarios><nome>Matheus</nome><resultado>(103 - 61) : (ERROU!)
+(7 * 6) : (ERROU!)
+(10 * 6) : (ERROU!)
+(2 + 40) : (ERROU!)
+(2 * 6) : (ERROU!)
+
+NOTA: 0.0
+
+</resultado></Usuarios><Usuarios><nome>Matheus</nome><resultado>(2 + 26) : (ACERTOU!)
+(2 + 26) : (ERROU!)
+(2 + 26) : (ERROU!)
+(2 + 26) : (ERROU!)
+(2 + 26) : (ERROU!)
+(2 + 26) : (ERROU!)
+
+NOTA: 0.5
+
+</resultado></Usuarios></Nome>
