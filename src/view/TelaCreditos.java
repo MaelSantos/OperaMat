@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class TelaCreditos extends JFrame{
 private static final long serialVersionUID = 1L;
 	
-	private JLabel creditoLabel = new JLabel(new ImageIcon("imagens/fundoTelaCreditos.png"));
+	private JLabel creditoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoTelaCreditos.png")));
 	
 	public TelaCreditos(){
 		super("Créditos");

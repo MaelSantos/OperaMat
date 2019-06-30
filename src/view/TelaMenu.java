@@ -10,23 +10,23 @@ import javax.swing.JTextField;
 public class TelaMenu extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel jogar = new JLabel(new ImageIcon("imagens/jogar.png"));
-	private JLabel multiplayer = new JLabel(new ImageIcon("imagens/multiplayer.png"));
-	private JLabel opcoesJogo = new JLabel(new ImageIcon("imagens/opcoesJogo.png"));
-	private JLabel creditosLabel = new JLabel(new ImageIcon("imagens/credits.png"));
+	private JLabel jogar = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("jogar.png")));
+	private JLabel multiplayer = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("multiplayer.png")));
+	private JLabel opcoesJogo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("opcoesJogo.png")));
+	private JLabel creditosLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("credits.png")));
 	private JLabel nomeJLabel = new JLabel("Digite seu Nome:");
 	private JLabel InformacaoNomeJLabel = new JLabel();
-	private JLabel scoreLabel = new JLabel(new ImageIcon("imagens/score.png"));
-	private JLabel menuImagem = new JLabel(new ImageIcon("imagens/imagemDeFundo.png"));
+	private JLabel scoreLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("score.png")));
+	private JLabel menuImagem = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("imagemDeFundo.png")));
 	private Font fonteFont = new Font("Serif", Font.BOLD|Font.BOLD, 20);
 	private JTextField nomeField = new JTextField(20);
 	
-	private JLabel voltarLabel = new JLabel(new ImageIcon("imagens/voltar.png"));
-	private JLabel divisaoLabel = new JLabel(new ImageIcon("imagens/divisao.png"));
-	private JLabel multiplicacaoLabel = new JLabel(new ImageIcon("imagens/multiplicacao.png"));
-	private JLabel somaLabel = new JLabel(new ImageIcon("imagens/soma.png"));
-	private JLabel subtracaoLabel = new JLabel(new ImageIcon("imagens/subtracao.png"));
-	private JLabel todasLabel = new JLabel(new ImageIcon("imagens/todos.png"));
+	private JLabel voltarLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("voltar.png")));
+	private JLabel divisaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("divisao.png")));
+	private JLabel multiplicacaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("multiplicacao.png")));
+	private JLabel somaLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("soma.png")));
+	private JLabel subtracaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("subtracao.png")));
+	private JLabel todasLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("todos.png")));
 	
 	public TelaMenu(){}
 
