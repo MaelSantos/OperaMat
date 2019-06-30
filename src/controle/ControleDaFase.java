@@ -31,7 +31,7 @@ public class ControleDaFase extends JPanel{
 	private ArrayList<Tigre> tigres = new ArrayList<>();
 	private ArrayList<Integer> primeiroAlgarismo = new ArrayList<Integer>();
 	private ImageIcon background;
-	private ImageIcon lifeIcon = new ImageIcon(getClass().getResource("vida.png"));
+	private ImageIcon lifeIcon = new ImageIcon(getClass().getResource("vida2.png"));
 	private Image lifImage = lifeIcon.getImage();
 	private int life = 5;
 	private int lifeMult = 5;

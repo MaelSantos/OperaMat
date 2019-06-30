@@ -95,4 +95,20 @@ NOTA: 3.0
 
 NOTA: 2.0
 
+</resultado></Usuarios><Usuarios><nome>fsds</nome><resultado>(2 + 78) : (ERROU!)
+(5 + 75) : (ERROU!)
+(2 + 78) : (ERROU!)
+(5 + 75) : (ERROU!)
+(5 + 75) : (ERROU!)
+
+NOTA: 0.0
+
+</resultado></Usuarios><Usuarios><nome>asd</nome><resultado>(5 + 0) : (ERROU!)
+(5 + 0) : (ERROU!)
+(2 + 2) : (ERROU!)
+(6 + 2) : (ERROU!)
+(3 + 1) : (ERROU!)
+
+NOTA: 0.0
+
 </resultado></Usuarios></Nome>
