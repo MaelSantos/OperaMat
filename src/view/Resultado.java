@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -11,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class Resultado extends JDialog {
+public class Resultado extends JPanel {
 
 	private static final long serialVersionUID = -3792969622223059913L;
 	
@@ -21,19 +22,13 @@ public class Resultado extends JDialog {
 	private JButton btnVoltar, btnExportar;
 	
 	public Resultado(JFrame frame) {
-		super(frame, "Resultados", true);
+//		super(frame, "Resultados", true);
 		
 		fundo = new ImageIcon(getClass().getClassLoader().getResource("backgroundAbertura.png"));
 		voltar = new ImageIcon(getClass().getClassLoader().getResource("voltar.png"));
 //		fundo = new ImageIcon(getClass().getClassLoader().getResource("OperaMat.png"));
 		
-		pnlFundo = new JPanel() {
-			private static final long serialVersionUID = -1090441492036530722L;
-			protected void paintComponent(Graphics g) {
-				Graphics2D g2 = (Graphics2D) g;
-				g2.drawImage(fundo.getImage(), 0, 0, null);
-			};
-		};
+		pnlFundo = new JPanel();
 		
 		pnlFundo.setSize(300, 400);
 		pnlFundo.setBounds(0, 0, 300, 400);
@@ -48,25 +43,24 @@ public class Resultado extends JDialog {
 		btnVoltar.setBorderPainted(false);
 		btnVoltar.setFocusPainted(false);
 		
-		btnVoltar.addActionListener(e ->{
-			setVisible(false);
-		});
-		
 		pnlFundo.add(new JScrollPane(txaResultados));
 		pnlFundo.add(btnVoltar);
-//		pnlFundo.add(btnExportar);
+		pnlFundo.add(btnExportar);
 		add(pnlFundo);
 		
-		setSize(300, 400);
-		setResizable(false);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		pnlFundo.setBackground(new Color(255,255,255,0));
+		
+		setBounds(300, 40, 500, 400);
 		setLayout(null);
+		setBackground(new Color(255,255,255,0));
 		setVisible(false);
 	}
 	public void atualizar(String resultados)
 	{
 		txaResultados.setText(resultados);
+	}
+	public JButton getBtnVoltar() {
+		return btnVoltar;
 	}
 	
 }

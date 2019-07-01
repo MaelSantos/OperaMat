@@ -19,15 +19,15 @@ public class TelaMenu extends JFrame{
 	private JLabel InformacaoNomeJLabel = new JLabel();
 	private JLabel scoreLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("score.png")));
 	private JLabel menuImagem = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("backgroundAbertura.png")));
-	private Font fonteFont = new Font("Serif", Font.BOLD|Font.BOLD, 20);
-	private JTextField nomeField = new JTextField(20);
+	private Font fonteFont = new Font("Arial", Font.BOLD|Font.BOLD, 20);
+	private JTextField nomeField = new JTextField(10);
 	
 	private JLabel voltarLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("voltar.png")));
-	private JLabel divisaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("divisao.png")));
-	private JLabel multiplicacaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("multiplicacao.png")));
+	private JLabel divisaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("divisaoH.png")));
+	private JLabel multiplicacaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("multiplicacaoH.png")));
 	private JLabel somaLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("soma.png")));
-	private JLabel subtracaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("subtracao.png")));
-	private JLabel todasLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("todos.png")));
+	private JLabel subtracaoLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("subtracaoH.png")));
+	private JLabel todasLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("todosH.png")));
 	
 	public TelaMenu(){}
 

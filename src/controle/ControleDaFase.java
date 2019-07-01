@@ -42,7 +42,7 @@ public class ControleDaFase extends JPanel{
 	private Random rand = new Random();
 	private  Game game;
 	private String resultado = "";
-	private int velocidade = 30;//15
+	private int velocidade = 15;
 	private String jogador;
 	private int auxSoma;
 	private int auxSubtracao;
@@ -102,7 +102,7 @@ public class ControleDaFase extends JPanel{
 	
 	public void criarTigre(){
 		
-		for(int i = 0; i<21; i++){
+		for(int i = 0; i<=18; i++){
 			try {
 //				tigres.add( new Tigre("tigre.png", 0, 100, 100,4,4,
 //						430, 550 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
@@ -165,7 +165,7 @@ public class ControleDaFase extends JPanel{
 	public void desenharLife(Graphics g){
 		for (int i=0; i<life; i++){
 			if(this.life > 0){
-				g.drawImage(lifImage, 750+(i*30), 8, this);
+				g.drawImage(lifImage, 745+(i*30), 8, this);
 			}
 		}
 		
@@ -204,10 +204,10 @@ public class ControleDaFase extends JPanel{
 		if(estagio == 3 && !multiplayer){
 			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
 			g.drawString("Jogador: "+jogador , 10, 30);
-			g.drawString("Pontuação: " + pontos + " Pontos", 300, 30);
-			g.drawString("Vidas:" , 690, 30);
+			g.drawString("Pontuação: " + pontos + " Pontos", 310, 30);
+			g.drawString("Vidas:" , 685, 30);
 			g.setFont(new Font("Arial", Font.BOLD, 35));
-			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma, 400, 290);
+			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma, 400, 240);
 		}
 		if(estagio == 4){
 			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
@@ -544,7 +544,9 @@ public class ControleDaFase extends JPanel{
 	}
 	
 	void rodarTigreNaTela(Tigre tigre){
-		if(tigre.getX()==430 && tigre.getY()==430){
+		int delimitacaoInferior = 350;
+		int delimitacaoDireita = 50;//430
+		if(tigre.getX()==430 && tigre.getY()==delimitacaoInferior){
 			tigre.xCrescente = false; //direita
 			tigre.yCrescente = false; //cima
 			tigre.xDecrescente = true; //esquerda
@@ -585,7 +587,7 @@ public class ControleDaFase extends JPanel{
 			if (tigre.left==3) tigre.left=0;
 			else tigre.left++;		
 		}
-		if(tigre.getX() == 50){ //move para cima
+		if(tigre.getX() == 60){ //move para cima
 			tigre.xDecrescente = false;
 			tigre.yDecrescente = true;
 		}
@@ -636,7 +638,7 @@ public class ControleDaFase extends JPanel{
 			else tigre.right++;	
 		}
 //		if(tigre.getY() == 50 && tigre.getX()==690){ //move para baixo
-		if(tigre.getY() == 50 && tigre.getX()==780){ //move para baixo
+		if(tigre.getY() == 50 && tigre.getX()==770){ //move para baixo 780
 			tigre.xCrescente = false;
 			tigre.yCrescente = true;
 		}
@@ -663,7 +665,7 @@ public class ControleDaFase extends JPanel{
 			if (tigre.down==3) tigre.down=0;
 			else tigre.down++;
 		}
-		if(tigre.getY() == 430){ //mover para cima
+		if(tigre.getY() == delimitacaoInferior){ //mover para cima
 			tigre.yCrescente = false;
 			tigre.xDecrescente = true;
 		}
