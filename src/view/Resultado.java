@@ -26,6 +26,7 @@ public class Resultado extends JPanel {
 		
 		fundo = new ImageIcon(getClass().getClassLoader().getResource("backgroundAbertura.png"));
 		voltar = new ImageIcon(getClass().getClassLoader().getResource("voltar.png"));
+		exportar = new ImageIcon(getClass().getClassLoader().getResource("exportar.png"));
 //		fundo = new ImageIcon(getClass().getClassLoader().getResource("OperaMat.png"));
 		
 		pnlFundo = new JPanel();
@@ -37,11 +38,15 @@ public class Resultado extends JPanel {
 		txaResultados.setEditable(false);
 		
 		btnVoltar = new JButton(voltar);
-		btnExportar = new JButton("Exportar");
+		btnExportar = new JButton(exportar);
 		
 		btnVoltar.setContentAreaFilled(false);
 		btnVoltar.setBorderPainted(false);
 		btnVoltar.setFocusPainted(false);
+		
+		btnExportar.setContentAreaFilled(false);
+		btnExportar.setBorderPainted(false);
+		btnExportar.setFocusPainted(false);
 		
 		pnlFundo.add(new JScrollPane(txaResultados));
 		pnlFundo.add(btnVoltar);
