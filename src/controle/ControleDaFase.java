@@ -42,7 +42,7 @@ public class ControleDaFase extends JPanel{
 	private Random rand = new Random();
 	private  Game game;
 	private String resultado = "";
-	private int velocidade = 40;//15
+	private int velocidade = 30;//15
 	private String jogador;
 	private int auxSoma;
 	private int auxSubtracao;
@@ -93,7 +93,7 @@ public class ControleDaFase extends JPanel{
 		}
 		if(multiplayer){
 			try {
-				miraMult = new Sprite("mira.png", 0, 12, 11, 1, 1, LARGURA_JANELA/2, ALTURA_JANELA/2);
+				miraMult = new Sprite("rede.png", 0, 12, 11, 1, 1, LARGURA_JANELA/2, ALTURA_JANELA/2);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -129,12 +129,12 @@ public class ControleDaFase extends JPanel{
 	}
 	
 	public void desenharMira(Graphics g){
-		g.drawImage(mira.sprites[mira.getImagemAtual()], mira.getX() - 15, mira.getY() - 17, this);
+		g.drawImage(mira.sprites[mira.getImagemAtual()], mira.getX() - 27, mira.getY() - 37, this);
 //		g.drawOval(mira.getX()-15, mira.getY()-17, 30, 30);
 //		g.drawOval(mira.getX()-30, mira.getY()-32, 60, 60);
 		
 		if(multiplayer){
-			g.drawImage(miraMult.sprites[miraMult.getImagemAtual()], miraMult.getX() - 15, miraMult.getY() - 17, this);
+			g.drawImage(miraMult.sprites[miraMult.getImagemAtual()], miraMult.getX() - 27, miraMult.getY() - 27, this);
 //			g.drawOval(miraMult.getX()-15, miraMult.getY()-17, 30, 30);
 //			g.drawOval(miraMult.getX()-30, miraMult.getY()-32, 60, 60);
 		}
@@ -338,7 +338,7 @@ public class ControleDaFase extends JPanel{
 	
 	public void fimDeJogo(){
 		if(!multiplayer){
-			if(this.life == 0 || this.pontos == 21 ){
+			if(this.life <= 0 || this.pontos == 21 ){
 				tigres.removeAll(tigres);
 //				10 / 21 = 0.476190476
 				new Xml().add_usuario(jogador, this.resultado+ "NOTA: " +((int)(pontos*0.476190476))+ "\n\n");
@@ -348,7 +348,7 @@ public class ControleDaFase extends JPanel{
 			}
 		}
 		if(multiplayer){
-			if(this.lifeMult == 0 || this.pontosMult == 21 || this.life == 0 || this.pontos == 21 || this.pontosMult + this.pontos==21){
+			if(this.lifeMult <= 0 || this.pontosMult == 21 || this.life <= 0 || this.pontos == 21 || this.pontosMult + this.pontos==21){
 				tigres.removeAll(tigres);
 				Mensagem.exibirMensagemFimJogoMult(pontos, pontosMult);
 				lifeMult = 1;

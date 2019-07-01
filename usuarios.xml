@@ -137,4 +137,12 @@ NOTA: 0.0
 (3 + 60) : (ACERTOU!)
 NOTA: 8.5
 
+</resultado></Usuarios><Usuarios><nome>adf</nome><resultado>(4 + 66) : (ERROU!)
+(9 + 66) : (ERROU!)
+(5 + 66) : (ERROU!)
+(4 + 66) : (ERROU!)
+(5 + 66) : (ERROU!)
+(5 + 66) : (ERROU!)
+NOTA: 0
+
 </resultado></Usuarios></Nome>
