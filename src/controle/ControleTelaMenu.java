@@ -1,11 +1,17 @@
 package controle;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import Utilidades.Xml;
 import view.Resultado;
@@ -15,33 +21,52 @@ import view.TelaMenu;
 public class ControleTelaMenu extends JFrame{
 	private static final long serialVersionUID = 1L;
 
+	private JPanel pnlOpcoes, pnlTipos, pnlEntrada;
+	
 	public ControleTelaMenu(TelaMenu telaMenu, Resultado resultado, String nomeJogo) {
 		super(nomeJogo);
 		telaMenu.getNomeJLabel().setFont(telaMenu.getFonteFont());
 		telaMenu.getNomeField().setFont(telaMenu.getFonteFont());
 		setLayout(null);
 		
+		pnlOpcoes = new JPanel();
+		pnlOpcoes.setBounds(310, 10, 300, 300);
+		pnlOpcoes.setBackground(new Color(255,255,255,0));
 		
-		add(telaMenu.getMultiplicacaoLabel()).setBounds(295,403,255,40);
-		add(telaMenu.getSomaLabel()).setBounds(325,475,180,40);
-		add(telaMenu.getSubtracaoLabel()).setBounds(310,440,210,40);
-		add(telaMenu.getTodasLabel()).setBounds(340,510,150,40);
-		add(telaMenu.getVoltarLabel()).setBounds(340, 550, 150, 40);
-		add(telaMenu.getDivisaoLabel()).setBounds(348,370,150,40);
+		pnlTipos = new JPanel();
+		pnlTipos.setBounds(310, 10, 300, 300);
+		pnlTipos.setBackground(new Color(255,255,255,0));
+		
+		pnlEntrada = new JPanel();
+		pnlEntrada.setBounds(210, 330, 500, 100);
+		pnlEntrada.setBackground(new Color(255,255,255,0));
+		
+		pnlTipos.add(telaMenu.getMultiplicacaoLabel()).setBounds(295,403,255,40);
+		pnlTipos.add(telaMenu.getSomaLabel()).setBounds(325,475,180,40);
+		pnlTipos.add(telaMenu.getSubtracaoLabel()).setBounds(310,440,210,40);
+		pnlTipos.add(telaMenu.getTodasLabel()).setBounds(340,510,150,40);
+		pnlTipos.add(telaMenu.getVoltarLabel()).setBounds(340, 550, 150, 40);
+		pnlTipos.add(telaMenu.getDivisaoLabel()).setBounds(348,370,150,40);
 		esconderTelaSecundaria(telaMenu);
 		
-		//add(telaMenu.getMultiplayer()).setBounds(288,405,224,52);
-		add(telaMenu.getJogar()).setBounds(285,370,243,53);
-		add(telaMenu.getOpcoesJogoLabel()).setBounds(280,410,240,52);
-		add(telaMenu.getScoreLabel()).setBounds(295,455,220,48);
-		add(telaMenu.getCreditosLabel()).setBounds(315,490,174,48);
-		add(telaMenu.getNomeJLabel()).setBounds(20,600,250,40);
-		add(telaMenu.getNomeField()).setBounds(220,605,300,40);
-		add(telaMenu.getInformacaoNomeJLabel()).setBounds(530, 600, 250, 40);
+//		add(telaMenu.getMultiplayer()).setBounds(288,405,224,52);
+		pnlOpcoes.add(telaMenu.getJogar()).setBounds(285,100,243,53);//370
+		pnlOpcoes.add(telaMenu.getOpcoesJogoLabel()).setBounds(280,140,240,52);//410
+		pnlOpcoes.add(telaMenu.getScoreLabel()).setBounds(295,185,220,48);//455
+		pnlOpcoes.add(telaMenu.getCreditosLabel()).setBounds(315,220,174,48);//490
+		pnlOpcoes.add(telaMenu.getSairLabel()).setBounds(315,220,174,48);//490
+		
+		pnlEntrada.add(telaMenu.getNomeJLabel()).setBounds(20,330,250,40);//600
+		pnlEntrada.add(telaMenu.getNomeField()).setBounds(220,335,300,40);//605
+		add(telaMenu.getInformacaoNomeJLabel()).setBounds(530, 330, 250, 40);//600
 	
-		add(telaMenu.getMenuImagem()).setBounds(-5,0,800,600);
-			
-		setSize(800, 680);
+		add(pnlOpcoes);
+		add(pnlEntrada);
+		add(pnlTipos);
+		add(telaMenu.getMenuImagem()).setBounds(0,0,900,500);
+		
+		setUndecorated(true);
+		setSize(900, 500);//ak//800x680
 		setForeground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFocusable(false);
@@ -63,12 +88,19 @@ public class ControleTelaMenu extends JFrame{
 			}
 		});
 		
+		telaMenu.getSairLabel().addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e){
+				System.exit(0);
+			}
+		});
+		
 		telaMenu.getOpcoesJogoLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				if(telaMenu.getNomeField().getText().equals("")){
-					telaMenu.getInformacaoNomeJLabel().setForeground(Color.RED);
-					telaMenu.getInformacaoNomeJLabel().setFont(new Font("serif", Font.ITALIC|Font.BOLD, 20));
-					telaMenu.getInformacaoNomeJLabel().setText("* DIGITE SEU NOME.");
+				if(telaMenu.getNomeField().getText().trim().equals("")){
+//					telaMenu.getInformacaoNomeJLabel().setForeground(Color.RED);
+//					telaMenu.getInformacaoNomeJLabel().setFont(new Font("serif", Font.ITALIC|Font.BOLD, 20));
+//					telaMenu.getInformacaoNomeJLabel().setText("* DIGITE SEU NOME.");
+					JOptionPane.showMessageDialog(null, "DIGITE SEU NOME.");
 				}else{
 					esconderTelaPrimaria(telaMenu);
 					mostrarTelaSecundaria(telaMenu);
@@ -136,14 +168,17 @@ public class ControleTelaMenu extends JFrame{
 //		});
 		telaMenu.getJogar().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				if(!telaMenu.getNomeField().getText().equals("")){
+				if(!telaMenu.getNomeField().getText().trim().equals("")){
 					new ControleTelaDaFase(telaMenu.getNomeField().getText(), 3, "OperaMat");
 					esconderTelaSecundaria(telaMenu);
 					mostrarTelaPrimaria(telaMenu);
 				}else{
-					telaMenu.getInformacaoNomeJLabel().setForeground(Color.RED);
-					telaMenu.getInformacaoNomeJLabel().setFont(new Font("serif", Font.ITALIC|Font.BOLD, 20));
-					telaMenu.getInformacaoNomeJLabel().setText("* DIGITE SEU NOME.");
+//					telaMenu.getInformacaoNomeJLabel().setForeground(Color.RED);
+//					telaMenu.getInformacaoNomeJLabel().setFont(new Font("serif", Font.ITALIC|Font.BOLD, 20));
+//					telaMenu.getInformacaoNomeJLabel().setText("* DIGITE SEU NOME.");
+					
+					JOptionPane.showMessageDialog(null, "DIGITE SEU NOME.");
+					
 				}
 			}
 		});
@@ -151,39 +186,23 @@ public class ControleTelaMenu extends JFrame{
 	
 	}
 	
-	
-	
 	public void esconderTelaSecundaria(TelaMenu menu){
-		menu.getDivisaoLabel().setVisible(false);
-		menu.getMultiplicacaoLabel().setVisible(false);
-		menu.getSomaLabel().setVisible(false);
-		menu.getSubtracaoLabel().setVisible(false);
-		menu.getTodasLabel().setVisible(false);
-		menu.getVoltarLabel().setVisible(false);
+		pnlTipos.setVisible(false);
+		pnlOpcoes.setVisible(true);
 	}
 	
 	public void esconderTelaPrimaria(TelaMenu menu){
-		menu.getJogar().setVisible(false);
-		menu.getOpcoesJogoLabel().setVisible(false);
-		menu.getCreditosLabel().setVisible(false);
-		menu.getScoreLabel().setVisible(false);
-		menu.getMultiplayer().setVisible(false);
+		pnlOpcoes.setVisible(false);
+		pnlTipos.setVisible(true);
 	}
 	
 	public void mostrarTelaSecundaria(TelaMenu menu){
-		menu.getSomaLabel().setVisible(true);
-		menu.getSubtracaoLabel().setVisible(true);
-		menu.getDivisaoLabel().setVisible(true);
-		menu.getMultiplicacaoLabel().setVisible(true);
-		menu.getTodasLabel().setVisible(true);
-		menu.getVoltarLabel().setVisible(true);
+		pnlOpcoes.setVisible(false);
+		pnlTipos.setVisible(true);
 	}
 	
 	public void mostrarTelaPrimaria(TelaMenu menu){
-		menu.getJogar().setVisible(true);
-		menu.getOpcoesJogoLabel().setVisible(true);
-		menu.getCreditosLabel().setVisible(true);
-		menu.getScoreLabel().setVisible(true);
-		menu.getMultiplayer().setVisible(true);
+		pnlTipos.setVisible(false);
+		pnlOpcoes.setVisible(true);
 	}
 }

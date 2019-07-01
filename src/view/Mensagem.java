@@ -6,7 +6,8 @@ public class Mensagem {
 	
 	public static void exibirMensagemFimJogo(String jogador, String resultado, int pontos){
 		JOptionPane.showMessageDialog(null, jogador + 
-				"\n\n" + resultado + "\n\n" + "NOTA: " +(pontos * 0.5)+ "\n\n");
+//				10 / 21 = 0.476190476
+				"\n\n" + resultado + "\n\n" + "NOTA: " +((int)(pontos*0.476190476))+ "\n\n");
 	}
 	
 	public static boolean exibirMensagemVoltaMenu(){

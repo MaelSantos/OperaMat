@@ -31,7 +31,7 @@ public class ControleDaFase extends JPanel{
 	private ArrayList<Tigre> tigres = new ArrayList<>();
 	private ArrayList<Integer> primeiroAlgarismo = new ArrayList<Integer>();
 	private ImageIcon background;
-	private ImageIcon lifeIcon = new ImageIcon(getClass().getResource("vida2.png"));
+	private ImageIcon lifeIcon = new ImageIcon(getClass().getResource("vida.png"));
 	private Image lifImage = lifeIcon.getImage();
 	private int life = 5;
 	private int lifeMult = 5;
@@ -42,7 +42,7 @@ public class ControleDaFase extends JPanel{
 	private Random rand = new Random();
 	private  Game game;
 	private String resultado = "";
-	private int velocidade = 15;
+	private int velocidade = 40;//15
 	private String jogador;
 	private int auxSoma;
 	private int auxSubtracao;
@@ -50,8 +50,6 @@ public class ControleDaFase extends JPanel{
 	private int estagio;
 	private boolean fasesMisturadas;
 	private boolean multiplayer;
-	
-
 	
 	public ControleDaFase(String _usuario, int _estagio, boolean _todasFases, boolean _multiplayer){	
 		
@@ -75,7 +73,7 @@ public class ControleDaFase extends JPanel{
 		game = new Game();
 		game.start();
 				
-		background = new ImageIcon(getClass().getResource("telaDeFundo.png"));
+		background = new ImageIcon(getClass().getResource("backgroundFase.png"));//telaDeFundo.png
 		
 		if(!multiplayer){
 		addMouseListener(new MouseAdapter());
@@ -88,7 +86,8 @@ public class ControleDaFase extends JPanel{
 	
 	public void criarMira(){
 		try {
-			mira = new Sprite("mira.png", 0, 12, 11, 1, 1, LARGURA_JANELA/2, ALTURA_JANELA/2);
+//			mira = new Sprite("mira.png", 0, 12, 11, 1, 1, LARGURA_JANELA/2, ALTURA_JANELA/2);
+			mira = new Sprite("rede.png", 0, 12, 11, 1, 1, LARGURA_JANELA/2, ALTURA_JANELA/2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -103,12 +102,15 @@ public class ControleDaFase extends JPanel{
 	
 	public void criarTigre(){
 		
-		for(int i = 0; i<20; i++){
+		for(int i = 0; i<21; i++){
 			try {
 //				tigres.add( new Tigre("tigre.png", 0, 100, 100,4,4,
 //						430, 550 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
-				tigres.add( new Tigre("maca.png", 0, 100, 100,4,4,
-						430, 550 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
+				tigres.add( new Tigre("borbolet.png", 0, 96, 80, 10, 1,
+						430, 480 +(i*106), primeiroAlgarismo.get(i) * (rand.nextInt(9)+1),true));
+				
+//				System.out.println(tigres.get(0).getSprites().length);
+//				System.exit(0);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -117,7 +119,7 @@ public class ControleDaFase extends JPanel{
 	
 	public void criarPrimeiroAlgarismo(){
 		int[] base = {2,3,4,5,6,7,8,9,10};
-		for( int i = 0; i<21 ; i++){
+		for( int i = 0; i<22 ; i++){
 			if(i<8){
 				primeiroAlgarismo.add(base[i]);
 			}else{
@@ -127,14 +129,14 @@ public class ControleDaFase extends JPanel{
 	}
 	
 	public void desenharMira(Graphics g){
-		g.drawImage(mira.sprites[mira.getImagemAtual()], mira.getX() - 5, mira.getY() - 5, this);
-		g.drawOval(mira.getX()-15, mira.getY()-17, 30, 30);
-		g.drawOval(mira.getX()-30, mira.getY()-32, 60, 60);
+		g.drawImage(mira.sprites[mira.getImagemAtual()], mira.getX() - 15, mira.getY() - 17, this);
+//		g.drawOval(mira.getX()-15, mira.getY()-17, 30, 30);
+//		g.drawOval(mira.getX()-30, mira.getY()-32, 60, 60);
 		
 		if(multiplayer){
-			g.drawImage(miraMult.sprites[miraMult.getImagemAtual()], miraMult.getX() - 5, miraMult.getY() - 5, this);
-			g.drawOval(miraMult.getX()-15, miraMult.getY()-17, 30, 30);
-			g.drawOval(miraMult.getX()-30, miraMult.getY()-32, 60, 60);
+			g.drawImage(miraMult.sprites[miraMult.getImagemAtual()], miraMult.getX() - 15, miraMult.getY() - 17, this);
+//			g.drawOval(miraMult.getX()-15, miraMult.getY()-17, 30, 30);
+//			g.drawOval(miraMult.getX()-30, miraMult.getY()-32, 60, 60);
 		}
 	}
 	
@@ -145,9 +147,17 @@ public class ControleDaFase extends JPanel{
 	public void desenharTigres(Graphics g){
 		for(Tigre tigre: tigres){
 			if(tigre.isVida()){
+				//bug
+				try{
+//				System.out.println(tigre.getImagemAtual());
+				
 				g.drawImage(tigre.sprites[tigre.getImagemAtual()],
 						tigre.getX(), tigre.getY(), this);
+				g.setColor(Color.BLACK);
 				g.drawString("" + tigre.getNumero(), tigre.getX()+40, tigre.getY()+20);
+				}catch (Exception e){
+					System.exit(0);
+				}
 			}
 		}
 	}
@@ -155,62 +165,57 @@ public class ControleDaFase extends JPanel{
 	public void desenharLife(Graphics g){
 		for (int i=0; i<life; i++){
 			if(this.life > 0){
-				g.drawImage(lifImage, 810+(i*30),180, this);
+				g.drawImage(lifImage, 750+(i*30), 8, this);
 			}
 		}
 		
 		if(multiplayer){
 			for (int i=0; i<lifeMult; i++){
 				if(this.lifeMult > 0){
-					g.drawImage(lifImage, 810+(i*30),300, this);
+					g.drawImage(lifImage, 750+(i*30),8, this);
 				}
 			}
 		}
 	}
 	
 	public void desenharInformacoesSoma(Graphics g){
+		String a="Capture a borboleta";
 		
 		if(estagio == 1){
-			g.drawString(jogador , 810, 80);
-			g.drawString("--------------------", 810, 95);
-			g.drawString("" + pontos + " Pontos", 810, 120);
-			g.drawString("Vidas" , 810, 170);
-			g.drawString("Acerte um",355,260);
-			g.drawString("número que é",350,290);
-			g.drawString("divisível por ",355,320);
-			g.drawString(""+ primeiroAlgarismo.get(0),415,350);
+			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
+			g.drawString("Jogador: "+jogador , 10, 30);
+			g.drawString("Pontuação: " + pontos + " Pontos", 300, 30);
+			g.drawString("Vidas:" , 690, 30);
+			g.setFont(new Font("Arial", Font.BOLD, 35));
+			g.drawString("divisivel por "+ primeiroAlgarismo.get(0),310,290);
+//			g.drawString(""+ primeiroAlgarismo.get(0),300,310);
+//			g.drawString(""+ primeiroAlgarismo.get(0),415,350);
 		}
 		
 		if(estagio == 2){
-			g.drawString(jogador , 810, 80);
-			g.drawString("--------------------", 810, 95);
-			g.drawString("" + pontos + " Pontos", 810, 120);
-			g.drawString("Vidas" , 810, 170);
-			g.drawString("Acerte um",355,260);
-			g.drawString("número que é",350,290);
-			g.drawString("resultado de ",358,320);
-			g.drawString(primeiroAlgarismo.get(0) + " x " +	auxMultiplicacao,395,350);
+			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
+			g.drawString("Jogador: "+jogador , 10, 30);
+			g.drawString("Pontuação: " + pontos + " Pontos", 300, 30);
+			g.drawString("Vidas:" , 690, 30);
+			g.setFont(new Font("Arial", Font.BOLD, 35));
+			g.drawString(primeiroAlgarismo.get(0) + " x " +	auxMultiplicacao,400,290);
 			
 		}
 		if(estagio == 3 && !multiplayer){
-			g.drawString(jogador , 810, 80);
-			g.drawString("--------------------", 810, 95);
-			g.drawString("" + pontos + " Pontos", 810, 120);
-			g.drawString("Vidas" , 810, 170);
-			g.drawString("Acerte um",355,260);
-			g.drawString("número que é",350,290);
-			g.drawString(" a soma de ",358,320);
-			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma,380,350);
+			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
+			g.drawString("Jogador: "+jogador , 10, 30);
+			g.drawString("Pontuação: " + pontos + " Pontos", 300, 30);
+			g.drawString("Vidas:" , 690, 30);
+			g.setFont(new Font("Arial", Font.BOLD, 35));
+			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma, 400, 290);
 		}
 		if(estagio == 4){
-			g.drawString(jogador , 810, 80);
-			g.drawString("--------------------", 810, 95);
-			g.drawString("" + pontos + " Pontos", 810, 120);
-			g.drawString("Vidas" , 810, 170);
-			g.drawString("Acerte um",355,260);
-			g.drawString("número que é",350,290);
-			g.drawString("a subtração de ",355,320);
-			g.drawString(primeiroAlgarismo.get(0) + " - " + auxSubtracao,380,350);
+			g.setFont(new Font("Arial", Font.CENTER_BASELINE, 17));
+			g.drawString("Jogador: "+jogador , 10, 30);
+			g.drawString("Pontuação: " + pontos + " Pontos", 300, 30);
+			g.drawString("Vidas:" , 690, 30);
+			g.setFont(new Font("Arial", Font.BOLD, 35));
+			g.drawString(primeiroAlgarismo.get(0) + " - " + auxSubtracao,400,290);
 		}
 		if(estagio == 3 && multiplayer){
 			g.drawString("Jogador 01" , 820, 80);
@@ -222,9 +227,9 @@ public class ControleDaFase extends JPanel{
 			g.drawString("Vidas" , 820, 290);
 			
 			
-			g.drawString("Acerte um",830,400);
-			g.drawString("número que é",830,430);
-			g.drawString("solução de ",830,460);
+//			g.drawString("Acerte um",830,400);
+//			g.drawString("número que é",830,430);
+//			g.drawString("solução de ",830,460);
 			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma,830,490);
 		}
 		
@@ -333,16 +338,17 @@ public class ControleDaFase extends JPanel{
 	
 	public void fimDeJogo(){
 		if(!multiplayer){
-			if(this.life == 0 || this.pontos == 20 ){
+			if(this.life == 0 || this.pontos == 21 ){
 				tigres.removeAll(tigres);
-				new Xml().add_usuario(jogador, this.resultado+ "NOTA: " +(pontos*0.5)+ "\n\n");
+//				10 / 21 = 0.476190476
+				new Xml().add_usuario(jogador, this.resultado+ "NOTA: " +((int)(pontos*0.476190476))+ "\n\n");
 				Mensagem.exibirMensagemFimJogo(jogador, resultado, pontos);
 				life =1;
 				pontos = 1;
 			}
 		}
 		if(multiplayer){
-			if(this.lifeMult == 0 || this.pontosMult == 20 || this.life == 0 || this.pontos == 20 || this.pontosMult + this.pontos==20){
+			if(this.lifeMult == 0 || this.pontosMult == 21 || this.life == 0 || this.pontos == 21 || this.pontosMult + this.pontos==21){
 				tigres.removeAll(tigres);
 				Mensagem.exibirMensagemFimJogoMult(pontos, pontosMult);
 				lifeMult = 1;
@@ -538,102 +544,126 @@ public class ControleDaFase extends JPanel{
 	}
 	
 	void rodarTigreNaTela(Tigre tigre){
-		if(tigre.getX()==430 && tigre.getY()==480){
-			tigre.xCrescente = false;
-			tigre.yCrescente = false;
-			tigre.xDecrescente = true; 
-			tigre.yDecrescente = false;
+		if(tigre.getX()==430 && tigre.getY()==430){
+			tigre.xCrescente = false; //direita
+			tigre.yCrescente = false; //cima
+			tigre.xDecrescente = true; //esquerda
+			tigre.yDecrescente = false; //baixo
 		}
 		
-		if(tigre.xDecrescente == true){
+		if(tigre.xDecrescente == true){ //move e anima para a direita
 			tigre.setX(tigre.getX() - 2);
 			switch (tigre.left) {
 			case 0:
-				tigre.setImagemAtual(1);
+				tigre.setImagemAtual(2);
 				break;
 			case 1:
-				tigre.setImagemAtual(5);
+				tigre.setImagemAtual(3);
 				break;
 			case 2:
-				tigre.setImagemAtual(9);
+				tigre.setImagemAtual(4);
 				break;
 			case 3:
-				tigre.setImagemAtual(13);
+				tigre.setImagemAtual(5);
 				break;
+//			case 4:
+//				tigre.setImagemAtual(6);
+//				break;
+//			case 5:
+//				tigre.setImagemAtual(6);
+//				break;
+//			case 6:
+//				tigre.setImagemAtual(7);
+//				break;
+//			case 7:
+//				tigre.setImagemAtual(8);
+//				break;
+//			case 8:
+//				tigre.setImagemAtual(9);
+//				break;
 			}
 			if (tigre.left==3) tigre.left=0;
 			else tigre.left++;		
 		}
-		if(tigre.getX() == 50){
+		if(tigre.getX() == 50){ //move para cima
 			tigre.xDecrescente = false;
 			tigre.yDecrescente = true;
 		}
-		if(tigre.yDecrescente == true){
+		if(tigre.yDecrescente == true){ //anima e move para cima 
 			tigre.setY(tigre.getY() - 2);
 			switch (tigre.up) {
 			case 0:
-				tigre.setImagemAtual(3);
+				tigre.setImagemAtual(2);
 				break;
 			case 1:
-				tigre.setImagemAtual(7);
+				tigre.setImagemAtual(3);
 				break;
 			case 2:
-				tigre.setImagemAtual(11);
+				tigre.setImagemAtual(4);
 				break;
 			case 3:
-				tigre.setImagemAtual(15);
+				tigre.setImagemAtual(5);
 				break;
 			}
+			
 			if (tigre.up==3) tigre.up=0;
 			else tigre.up++;
 		}
-		if(tigre.getY() == 50){
+		if(tigre.getY() == 50){ //move para baixo
 			tigre.yDecrescente = false;
 			tigre.xCrescente = true;
 		}
-		if(tigre.xCrescente==true){
+		if(tigre.xCrescente==true){ //move e anima para direita
 			tigre.setX(tigre.getX()+2);
 			switch (tigre.right) {
 			case 0:
 				tigre.setImagemAtual(2);
 				break;
 			case 1:
-				tigre.setImagemAtual(6);
+				tigre.setImagemAtual(3);
 				break;
 			case 2:
-				tigre.setImagemAtual(10);
+				tigre.setImagemAtual(4);
 				break;
 			case 3:
-				tigre.setImagemAtual(14);
+				tigre.setImagemAtual(5);
 				break;
+//			case 4:
+//				tigre.setImagemAtual(6);
+//				break;
 			}
 			if (tigre.right==3) tigre.right=0;
 			else tigre.right++;	
 		}
-		if(tigre.getY() == 50 && tigre.getX()==690){
+//		if(tigre.getY() == 50 && tigre.getX()==690){ //move para baixo
+		if(tigre.getY() == 50 && tigre.getX()==780){ //move para baixo
 			tigre.xCrescente = false;
 			tigre.yCrescente = true;
 		}
+		//ak
 		if(tigre.yCrescente==true){
 			tigre.setY(tigre.getY() + 2);
 			switch (tigre.down) {
 			case 0:
-				tigre.setImagemAtual(0);
+				tigre.setImagemAtual(2);
 				break;
 			case 1:
-				tigre.setImagemAtual(4);
+				tigre.setImagemAtual(3);
 				break;
 			case 2:
-				tigre.setImagemAtual(8);
+				tigre.setImagemAtual(4);
 				break;
 			case 3:
-				tigre.setImagemAtual(12);
+				tigre.setImagemAtual(5);
 				break;
-			}
+//			case 4:
+//				tigre.setImagemAtual(6);
+//				break;
+				}
 			if (tigre.down==3) tigre.down=0;
 			else tigre.down++;
 		}
-		if(tigre.getY() == 480){
+		if(tigre.getY() == 430){ //mover para cima
 			tigre.yCrescente = false;
 			tigre.xDecrescente = true;
 		}

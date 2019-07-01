@@ -66,8 +66,9 @@ public class ControleTelaDaFase extends JFrame {
 
 		add(botoes,BorderLayout.SOUTH);
 		
-		setSize(1000,660);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(900,560);//1000,660
+		setUndecorated(true);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setFocusable(false);
 		setResizable(false);
 		setLocationRelativeTo(null);

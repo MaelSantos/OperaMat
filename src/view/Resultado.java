@@ -23,7 +23,7 @@ public class Resultado extends JDialog {
 	public Resultado(JFrame frame) {
 		super(frame, "Resultados", true);
 		
-		fundo = new ImageIcon(getClass().getClassLoader().getResource("OperaMat.png"));
+		fundo = new ImageIcon(getClass().getClassLoader().getResource("backgroundAbertura.png"));
 		voltar = new ImageIcon(getClass().getClassLoader().getResource("voltar.png"));
 //		fundo = new ImageIcon(getClass().getClassLoader().getResource("OperaMat.png"));
 		
