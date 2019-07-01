@@ -63,16 +63,16 @@ public class Xml {
 			JOptionPane.showMessageDialog(null ,scroller, "JOGADOR  " + nomeUsuario,
 											JOptionPane.INFORMATION_MESSAGE);
 		}else{
-			JOptionPane.showMessageDialog(null, nomeUsuario + "  Não encontrado!");
+			JOptionPane.showMessageDialog(null, nomeUsuario + "  Nï¿½o encontrado!");
 		}
 	}
-	
+	@Deprecated
 	public void exibir(){
 		List<Element> lista = loginElement.getChildren();
 		String output = "";
 		
 		for (Element elemento:lista){
-				output +=  elemento.getChildText("nome")+ ":\n " +
+				output +=  elemento.getChildText("nome")+ ":\n" +
 							elemento.getChildText("resultado") +"\n";
 			}
 			
@@ -83,6 +83,18 @@ public class Xml {
 	
 		JOptionPane.showMessageDialog(null ,scroller, "RESULTADOS",
 									JOptionPane.INFORMATION_MESSAGE);	
+	}
+	
+	public String resultados(){
+		List<Element> lista = loginElement.getChildren();
+		String output = "";
+		
+		for (Element elemento:lista){
+				output +=  elemento.getChildText("nome")+ ":\n" +
+							elemento.getChildText("resultado") +"\n";
+		}
+		
+		return output;
 	}
 	
 	public void add_usuario(String _nome, String _resultado){

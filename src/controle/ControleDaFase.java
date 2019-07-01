@@ -175,7 +175,7 @@ public class ControleDaFase extends JPanel{
 			g.drawString("--------------------", 810, 95);
 			g.drawString("" + pontos + " Pontos", 810, 120);
 			g.drawString("Vidas" , 810, 170);
-			g.drawString("Destrua um",355,260);
+			g.drawString("Acerte um",355,260);
 			g.drawString("número que é",350,290);
 			g.drawString("divisível por ",355,320);
 			g.drawString(""+ primeiroAlgarismo.get(0),415,350);
@@ -186,7 +186,7 @@ public class ControleDaFase extends JPanel{
 			g.drawString("--------------------", 810, 95);
 			g.drawString("" + pontos + " Pontos", 810, 120);
 			g.drawString("Vidas" , 810, 170);
-			g.drawString("Destrua um",355,260);
+			g.drawString("Acerte um",355,260);
 			g.drawString("número que é",350,290);
 			g.drawString("resultado de ",358,320);
 			g.drawString(primeiroAlgarismo.get(0) + " x " +	auxMultiplicacao,395,350);
@@ -197,7 +197,7 @@ public class ControleDaFase extends JPanel{
 			g.drawString("--------------------", 810, 95);
 			g.drawString("" + pontos + " Pontos", 810, 120);
 			g.drawString("Vidas" , 810, 170);
-			g.drawString("Destrua um",355,260);
+			g.drawString("Acerte um",355,260);
 			g.drawString("número que é",350,290);
 			g.drawString(" a soma de ",358,320);
 			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma,380,350);
@@ -207,7 +207,7 @@ public class ControleDaFase extends JPanel{
 			g.drawString("--------------------", 810, 95);
 			g.drawString("" + pontos + " Pontos", 810, 120);
 			g.drawString("Vidas" , 810, 170);
-			g.drawString("Destrua um",355,260);
+			g.drawString("Acerte um",355,260);
 			g.drawString("número que é",350,290);
 			g.drawString("a subtração de ",355,320);
 			g.drawString(primeiroAlgarismo.get(0) + " - " + auxSubtracao,380,350);
@@ -222,7 +222,7 @@ public class ControleDaFase extends JPanel{
 			g.drawString("Vidas" , 820, 290);
 			
 			
-			g.drawString("Destrua um",830,400);
+			g.drawString("Acerte um",830,400);
 			g.drawString("número que é",830,430);
 			g.drawString("solução de ",830,460);
 			g.drawString(primeiroAlgarismo.get(0) + " + " + auxSoma,830,490);
@@ -335,7 +335,7 @@ public class ControleDaFase extends JPanel{
 		if(!multiplayer){
 			if(this.life == 0 || this.pontos == 20 ){
 				tigres.removeAll(tigres);
-				new Xml().add_usuario(jogador, this.resultado + "\n"+ "NOTA: " +(pontos*0.5)+ "\n\n");
+				new Xml().add_usuario(jogador, this.resultado+ "NOTA: " +(pontos*0.5)+ "\n\n");
 				Mensagem.exibirMensagemFimJogo(jogador, resultado, pontos);
 				life =1;
 				pontos = 1;

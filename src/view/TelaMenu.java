@@ -17,7 +17,7 @@ public class TelaMenu extends JFrame{
 	private JLabel nomeJLabel = new JLabel("Digite seu Nome:");
 	private JLabel InformacaoNomeJLabel = new JLabel();
 	private JLabel scoreLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("score.png")));
-	private JLabel menuImagem = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("imagemDeFundo.png")));
+	private JLabel menuImagem = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("OperaMat.png")));
 	private Font fonteFont = new Font("Serif", Font.BOLD|Font.BOLD, 20);
 	private JTextField nomeField = new JTextField(20);
 	

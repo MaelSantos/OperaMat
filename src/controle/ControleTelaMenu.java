@@ -8,13 +8,14 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
 import Utilidades.Xml;
+import view.Resultado;
 import view.TelaCreditos;
 import view.TelaMenu;
 
 public class ControleTelaMenu extends JFrame{
 	private static final long serialVersionUID = 1L;
 
-	public ControleTelaMenu(TelaMenu telaMenu, String nomeJogo) {
+	public ControleTelaMenu(TelaMenu telaMenu, Resultado resultado, String nomeJogo) {
 		super(nomeJogo);
 		telaMenu.getNomeJLabel().setFont(telaMenu.getFonteFont());
 		telaMenu.getNomeField().setFont(telaMenu.getFonteFont());
@@ -50,7 +51,9 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getScoreLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new Xml().exibir();
+				String result = new Xml().resultados();
+				resultado.atualizar(result);
+				resultado.setVisible(true);
 			}
 		});
 		
@@ -82,7 +85,7 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getDivisaoLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 1, "Opera Mat 2D");
+				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 1, "OperaMat");
 				esconderTelaSecundaria(telaMenu);
 				mostrarTelaPrimaria(telaMenu);
 			}
@@ -91,7 +94,7 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getMultiplicacaoLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 2, "Opera Mat 2D");
+				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 2, "OperaMat");
 				esconderTelaSecundaria(telaMenu);
 				mostrarTelaPrimaria(telaMenu);
 			}
@@ -100,7 +103,7 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getSomaLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 3, "Opera Mat 2D");
+				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 3, "OperaMat");
 				esconderTelaSecundaria(telaMenu);
 				mostrarTelaPrimaria(telaMenu);
 			}
@@ -109,7 +112,7 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getSubtracaoLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 4, "Opera Mat 2D");
+				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 4, "OperaMat");
 				esconderTelaSecundaria(telaMenu);
 				mostrarTelaPrimaria(telaMenu);
 			}
@@ -118,7 +121,7 @@ public class ControleTelaMenu extends JFrame{
 		
 		telaMenu.getTodasLabel().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 5, "Opera Mat 2D");
+				new ControleTelaDaFase(telaMenu.getNomeField().getText(), 5, "OperaMat");
 				esconderTelaSecundaria(telaMenu);
 				mostrarTelaPrimaria(telaMenu);
 
@@ -134,7 +137,7 @@ public class ControleTelaMenu extends JFrame{
 		telaMenu.getJogar().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				if(!telaMenu.getNomeField().getText().equals("")){
-					new ControleTelaDaFase(telaMenu.getNomeField().getText(), 3, "Opera Mat 2D");
+					new ControleTelaDaFase(telaMenu.getNomeField().getText(), 3, "OperaMat");
 					esconderTelaSecundaria(telaMenu);
 					mostrarTelaPrimaria(telaMenu);
 				}else{
